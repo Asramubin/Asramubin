@@ -1,0 +1,15 @@
+import 'Package:flutter/material.dart';
+void main(){
+runApp(MyApp());
+}
+class MyApp extends StatelessWidget
+{
+const MyApp({Super.key});
+@overide
+Widget build(BuildContext context)
+{
+return SafeArea(
+home;Text('CSE'),
+),);
+}
+}
