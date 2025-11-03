@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char ch;
+    FILE *fp = fopen("input.txt", "r");  // Corrected assignment and function name
+
+    if (!fp) {
+        printf("File not found.\n");
+        return 1;
+    }
+
+    while ((ch = fgetc(fp)) != EOF) {  // Corrected 'While' to 'while'
+        if (isalpha(ch))
+            printf("Identifier: %c\n", ch);  // Corrected 'print' to 'printf'
+        else if (isdigit(ch))
+            printf("Digit: %c\n", ch);
+        else if (ch == '+' || ch == '-' || ch == '*' || ch == '/')
+            printf("Operator: %c\n", ch);
+        else if (ch == '\n' || ch == ' ')
+            continue;
+        else
+            printf("Symbol: %c\n", ch);
+    }
+
+    fclose(fp);  // Moved inside the main function
+    return 0;
+}
