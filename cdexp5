@@ -1,3 +1,5 @@
+Parser.y
+
 %{
 #include <stdio.h>
 #include <stdlib.h>
@@ -78,6 +80,8 @@ int yyerror(const char *s) {
 }
 
 #-------------------------------------------------------------------------------------------
+Lexer.l
+
 %{
 #include "y.tab.h"
 #include <string.h>
