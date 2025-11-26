@@ -1,0 +1,49 @@
+import java.util.Scanner;
+public class HillCipher {
+    private int keymatrix[][];
+    private int matsize;
+    public HillCipher(int keymatrix[][])
+    {
+        this.keymatrix=keymatrix;
+        this.matsize=keymatrix.length;
+        if(matsize!=keymatrix[0].length)
+        {
+            throw new IllegalArgumentException(" keymat should be square!!");
+        }
+
+    }
+    public String encrypt(String msg)
+    {
+        msg=msg.toUpperCase().replaceAll("[^A-Z]"," ");
+        StringBuilder ct=new StringBuilder();
+        while(msg.length()%matsize!=0)
+        msg+='X';
+        for(int i=0;i<msg.length();i+=matsize)
+        {
+            int mv[]=new int[matsize];
+            for(int j=0;j<matsize;j++)
+            mv[j]=msg.charAt(i+j)-'A';
+            int cv[]=new int[matsize];
+            for(int row=0;row<matsize;row++)
+            {
+                for(int col=0;col<matsize;col++)
+                {
+                    cv[row]+=keymatrix[row][col]*mv[col];
+                }
+                cv[row]%=26;
+                ct.append((char)(cv[row]+'A'));
+            }
+        }
+        return ct.toString();
+    }
+    public static void main(String[] args) {
+        Scanner s1=new Scanner(System.in);
+        int key[][]={{2,3},{3,6}};
+        HillCipher obj=new HillCipher(key);
+        System.out.println("enter string to encrypt :");
+        String message=s1.nextLine();
+        String encrypted=obj.encrypt(message);
+        System.out.println("Encrypted :"+encrypted);
+        s1.close();
+    }
+}
