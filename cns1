@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<string.h>
+int main(){
+    char input[]="Helloworld";
+    char result_and[20];
+    char result_xor[20];
+    int len=strlen(input),i=0;
+    for (i=0;i<len;i++){
+        result_and[i]=input[i]&127;
+     
+    }
+    result_and[i]='\0';
+    for(i=0;i<len;i++){
+        result_xor[i]=input[i]^127;
+}
+result_xor[len]='\0';
+    printf("Original String is: %s\n",input);
+    printf("result of And %s\n",result_and);
+    printf("result of Xor %s\n",result_xor);
+    return 0;
+}
